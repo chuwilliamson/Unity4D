@@ -22,8 +22,10 @@
     <ClInclude Include="include\Application.h" />
     <ClInclude Include="include\Gizmos.h" />
     <ClInclude Include="include\gl_core_4_4.h" />
+    <ClInclude Include="include\IntroductionApp.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\IntroductionApp.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Gizmos.cpp" />
     <ClCompile Include="src\gl_core_4_4.c" />
