@@ -51,13 +51,19 @@ glm::mat4 Transform::Rotate(float radians, glm::vec3 axis)
 {
 	auto cos = glm::cos(radians);
 	auto sin = glm::sin(radians);
-	//if (axis.x == 1 && glm::length(axis) > 1)
+	auto rotation = glm::mat4(1);	
+	if (glm::length(axis) > 1)
+	{
+		return glm::mat4(0);
+	}
+	
+	
 		//z rotation 
 		//x   y    z
 		//cos -sin  0
 		//sin  cos  0
 		//0    0	1
-		return m_model;
+	return m_model;
 
 }
 
