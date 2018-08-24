@@ -4,6 +4,7 @@
 #include <glm/glm/fwd.hpp>
 #include <glm/glm/common.hpp>
 #include <glm/glm/ext.hpp>
+#include <glm/glm/glm.hpp>
 
 #include <Gizmos.h>
 //we need a base class to inherit from

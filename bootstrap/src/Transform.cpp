@@ -14,7 +14,7 @@
 //  0  0   1
 Transform::Transform()
 {
-	
+
 	m_model = glm::mat4(1);
 	m_worldPosition = m_model[3];
 	m_localPosition = m_model[3];
@@ -44,15 +44,20 @@ glm::mat4 Transform::Translate(glm::vec3 move)
 	glm::mat4 translation = glm::mat4(1);
 	translation[3].xyz = move;
 	m_model = m_model * translation;
+	return m_model;
 }
 
 glm::mat4 Transform::Rotate(float radians, glm::vec3 axis)
 {
-	//z rotation 
-	//x   y    z
-	//cos -sin  0
-	//sin  cos  0
-	//0    0	1
+	auto cos = glm::cos(radians);
+	auto sin = glm::sin(radians);
+	//if (axis.x == 1 && glm::length(axis) > 1)
+		//z rotation 
+		//x   y    z
+		//cos -sin  0
+		//sin  cos  0
+		//0    0	1
+		return m_model;
 
 }
 
@@ -63,4 +68,5 @@ glm::mat4 Transform::Scale(float size)
 	scale[1].y = size;
 	scale[2].z = size;
 	m_model = m_model * scale;
+	return m_model;
 }
