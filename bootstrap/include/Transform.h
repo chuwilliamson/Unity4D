@@ -1,6 +1,9 @@
 #pragma once
 #define GLM_FORCE_SWIZZLE
 #include <glm/glm/glm.hpp>
+#include <glm/glm/ext.hpp>
+#include <glm/glm/fwd.hpp>
+#include <glm/glm/common.hpp>
 
 
 class Transform
@@ -12,6 +15,8 @@ public:
 	glm::mat4 Translate(glm::vec3 move);
 	glm::mat4 Rotate(float radians, glm::vec3 axis);
 	glm::mat4 Scale(float size);
+	glm::vec3 getLocalPosition();
+	glm::mat4 getModel();
 
 private:	
 	/*

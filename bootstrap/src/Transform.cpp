@@ -44,6 +44,8 @@ glm::mat4 Transform::Translate(glm::vec3 move)
 	glm::mat4 translation = glm::mat4(1);
 	translation[3].xyz = move;
 	m_model = m_model * translation;
+	m_localPosition = m_model[3].xyz;
+ 
 	return m_model;
 }
 
@@ -74,5 +76,15 @@ glm::mat4 Transform::Scale(float size)
 	scale[1].y = size;
 	scale[2].z = size;
 	m_model = m_model * scale;
+	return m_model;
+}
+
+glm::vec3 Transform::getLocalPosition()
+{
+	return m_localPosition;
+}
+
+glm::mat4 Transform::getModel()
+{
 	return m_model;
 }
