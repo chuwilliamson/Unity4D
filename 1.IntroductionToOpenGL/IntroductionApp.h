@@ -2,16 +2,15 @@
 #define GLM_FORCE_SWIZZLE
 #include "Application.h"
 
-#include <glm/glm/glm.hpp>
-#include <glm/glm/ext.hpp>
-#include <glm/glm/fwd.hpp>
-#include "Transform.h"
+
+struct Transform;
 
 class IntroductionApp :	public Application
 {
 public:
 	IntroductionApp();
 	~IntroductionApp();
+	Transform* modelTransform;
 	glm::mat4 model;
 	// Inherited via Application
 	virtual void startup() override;

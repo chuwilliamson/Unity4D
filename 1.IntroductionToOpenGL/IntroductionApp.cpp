@@ -2,10 +2,18 @@
 #include "IntroductionApp.h"
 #include "Gizmos.h"
 #include "Transform.h"
+#include <glm/glm/glm.hpp>
+#include <glm/glm/ext.hpp>
+#include <glm/glm/fwd.hpp>
+#include <glm/glm/common.hpp>
+
+
+
+
 
 IntroductionApp::IntroductionApp(): model(1)
 {
-	
+	modelTransform = new Transform();
 }
 
 
@@ -26,7 +34,8 @@ void IntroductionApp::shutdown()
 
 void IntroductionApp::update(float dt)
 {
-	model = glm::translate(model, glm::vec3(glm::cos(dt), 0, 0));
+	modelTransform->Translate(glm::vec3(glm::cos(dt), 0, 0));	
+	model = modelTransform->getModel();
 }
 
 void IntroductionApp::draw()
@@ -37,7 +46,8 @@ void IntroductionApp::draw()
 																						//loop through the window
 	bool lines = false;
 	Gizmos::clear();
-	Gizmos::addSphere(model[3].xyz, 5, 10, 10, glm::vec4(.5, .25, .25, 1), &model);
+	
+	Gizmos::addSphere(modelTransform->getLocalPosition(), 5, 10, 10, glm::vec4(.5, .25, .25, 1), &model);
 	Gizmos::draw(projection * view);//draw
 	 
 
