@@ -62,7 +62,7 @@
     <IncludePath>$(SolutionDir)dep\include;$(ProjectDir)include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(SolutionDir)dep\lib\glfw\x86;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;</LibraryPath>
     <SourcePath>$(ProjectDir)src;$(VC_SourcePath);</SourcePath>
-    <OutDir>$(SolutionDir)dep\lib\bootstrap</OutDir>
+    <OutDir>$(SolutionDir)dep\lib\bootstrap\</OutDir>
     <IntDir>$(SolutionDir)obj\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
