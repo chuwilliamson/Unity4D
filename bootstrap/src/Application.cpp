@@ -29,28 +29,18 @@ void Application::run(const char * title, unsigned int width,
 	glClearColor(.8f, .8f, 0.8f, 1);//sets the clear color for the window
 	glEnable(GL_DEPTH_TEST); // enables the depth buffer 
 	startup();
- 
+
 	while (glfwWindowShouldClose(m_window) == false)
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//clear frame buffer
-		
-		double glfwTime = glfwGetTime();
-		std::printf("d time is %f \n", glfwTime);
-		update(glfwTime);
-		
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//clear frame buffer		
+		update(glfwGetTime());
 		draw();
-
 		glfwSwapBuffers(m_window);//swap the buffer for this window
-
 		glfwPollEvents();
-		if (glfwGetKey(m_window, GLFW_KEY_ESCAPE))
-		{
-			m_gameover = true;
-		}
-
+		m_gameover = glfwGetKey(m_window, GLFW_KEY_ESCAPE);
 		if (m_gameover)
 			shutdown();
-		
+
 	}
 }
 
