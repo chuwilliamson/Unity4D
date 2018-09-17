@@ -1,8 +1,20 @@
 #pragma once
+#define GLM_FORCE_SWIZZLE
 #include "Application.h"
 #include <vector>
-#include <Transform.h>
+#include <glm/glm/glm.hpp>
 
+class Mesh;
+class Shader;
+class Transform;
+
+
+struct GameObject
+{
+	Transform* transform;
+	Mesh* mesh;
+	Shader* shader;
+};
 
 class RenderingGeometryApp :public Application
 {
@@ -20,7 +32,9 @@ public:
 	unsigned int m_ibo;
 	unsigned int m_vao;
 	unsigned int m_program;
-
+	glm::mat4 model;
+	glm::mat4 view;
+	glm::mat4 projection;
 	~RenderingGeometryApp();
 
 	// Inherited via Application
@@ -28,5 +42,6 @@ public:
 	virtual void shutdown() override;
 	virtual void update(float dt) override;
 	virtual void draw() override;
+
 };
 
