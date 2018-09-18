@@ -5,6 +5,22 @@
 #include "glm/glm/glm.hpp"
 #include "glm/glm/ext.hpp"
 
+class FileReader
+{
+public:
+	std::string data;
+	void ReadFromFile(std::string filename)
+	{
+		errno_t err;
+		FILE* fp;
+		err = fopen_s(&fp, filename.c_str(), "r");
+		char buf[500];
+
+		while (std::fgets(buf, sizeof buf, fp))
+			data.append(buf);
+		err = fclose(fp);
+	}
+};
 
 RenderingGeometryApp::RenderingGeometryApp()
 {
@@ -32,39 +48,32 @@ void RenderingGeometryApp::startup()
 	};
 
 	m_indices = std::vector<int>{ 0,1,2,2,3,0 };
- 
+	
 	glGenVertexArrays(1, &m_vao);
 	glGenBuffers(1, &m_vbo);
 	glGenBuffers(1, &m_ibo);
 
 	glBindVertexArray(m_vao);
-
 	glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * m_vertices.size(), m_vertices.data() , GL_STATIC_DRAW);	
-	
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
+
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * m_vertices.size(), m_vertices.data() , GL_STATIC_DRAW);	
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * m_indices.size(), m_indices.data(), GL_STATIC_DRAW);
-	
 	
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
 
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)sizeof(glm::vec4));
-
 	glBindVertexArray(0);
+
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	
-
-
-	const char* vsSource = "#version 410\n \
-                            layout(location = 0) in vec4 Position; \
-                            layout(location = 1) in vec4 Color; \
-                            out vec4 vColor; \
-                            uniform mat4 ProjectionViewWorld; \
-                            void main() { vColor = Color; \
-                            gl_Position = ProjectionViewWorld * Position; }";
+	
+	FileReader* f = new FileReader();
+	f->ReadFromFile("vertex.vert");
+	const char* vsSource = f->data.c_str();
 
 	const char* fsSource = "#version 410\n \
                             in vec4 vColor; \
@@ -80,9 +89,9 @@ void RenderingGeometryApp::startup()
 	glShaderSource(fragmentShader, 1, (const char**)&fsSource, 0);
 	glCompileShader(fragmentShader);
 
+	m_program = glCreateProgram();
 	glAttachShader(m_program, vertexShader);
 	glAttachShader(m_program, fragmentShader);
-
 	glLinkProgram(m_program);
 
 }
@@ -103,7 +112,7 @@ void RenderingGeometryApp::draw()
 	glUseProgram(m_program);
 	glBindVertexArray(m_vao);
 
-	int mvp = glGetUniformLocation(0, "ProjectionViewWorld");
+	int mvp = glGetUniformLocation(m_program, "ProjectionViewWorld");
 	glm::mat4 pvm = projection * view * model;
 	glUniformMatrix4fv(mvp, 1, GL_FALSE, glm::value_ptr(pvm));
 
