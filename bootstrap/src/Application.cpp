@@ -2,6 +2,8 @@
 #include "gl_core_4_4.h"
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "imgui.h"
+#include <imgui_impl_glfw_gl3.h>
 
 Application::Application() :
 	m_window(nullptr),
@@ -28,21 +30,27 @@ void Application::run(const char * title, unsigned int width,
 
 	glClearColor(.8f, .8f, 0.8f, 1);//sets the clear color for the window
 	glEnable(GL_DEPTH_TEST); // enables the depth buffer 
+
+	ImGui_ImplGlfwGL3_Init(m_window, true);
 	startup();
  
 	while (glfwWindowShouldClose(m_window) == false)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//clear frame buffer
-		
 		double glfwTime = glfwGetTime();
-		std::printf("d time is %f \n", glfwTime);
+
+		glfwPollEvents();
+
+		ImGui_ImplGlfwGL3_NewFrame();
+		
+		
 		update(glfwTime);
 		
 		draw();
-
+		ImGui::Render();
 		glfwSwapBuffers(m_window);//swap the buffer for this window
 
-		glfwPollEvents();
+		
 		if (glfwGetKey(m_window, GLFW_KEY_ESCAPE))
 		{
 			m_gameover = true;

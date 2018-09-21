@@ -16,6 +16,13 @@
     <ClInclude Include="include\gl_core_4_4.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="include\imconfig.h" />
+    <ClInclude Include="include\imgui.h" />
+    <ClInclude Include="include\imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="include\imgui_internal.h" />
+    <ClInclude Include="include\stb_rect_pack.h" />
+    <ClInclude Include="include\stb_textedit.h" />
+    <ClInclude Include="include\stb_truetype.h" />
     <ClInclude Include="include\Transform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -24,6 +31,10 @@
     <ClCompile Include="src\gl_core_4_4.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\imgui.cpp" />
+    <ClCompile Include="src\imgui_demo.cpp" />
+    <ClCompile Include="src\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -62,7 +73,7 @@
     <IncludePath>$(SolutionDir)dep\include;$(ProjectDir)include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(SolutionDir)dep\lib\glfw\x86;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;</LibraryPath>
     <SourcePath>$(ProjectDir)src;$(VC_SourcePath);</SourcePath>
-    <OutDir>$(SolutionDir)dep\lib\bootstrap</OutDir>
+    <OutDir>$(SolutionDir)dep\lib\bootstrap\</OutDir>
     <IntDir>$(SolutionDir)obj\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
