@@ -17,6 +17,7 @@ protected:
 	virtual void shutdown() = 0;
 	virtual void update(float dt) = 0;
 	virtual void draw() = 0;
+	virtual void OnGUI() = 0;
 	GLFWwindow* m_window;
 	bool m_gameover;
 	float m_clearColor[4];

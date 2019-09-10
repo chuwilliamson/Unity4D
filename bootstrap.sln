@@ -7,7 +7,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bootstrap", "bootstrap\boot
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.IntroductionToOpenGL", "1.IntroductionToOpenGL\1.IntroductionToOpenGL.vcxproj", "{8A103248-2E35-480A-85C9-F3E980A3F8C6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2.CamerasAndProjections", "3.CamerasAndProjections\3.CamerasAndProjections.vcxproj", "{36F518ED-C571-4636-BF67-E50968B381C0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3.RenderingGeometry", "3.RenderingGeometry\3.RenderingGeometry.vcxproj", "{1494AE41-8511-4D99-BE36-E7543781B24C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1A504966-1A93-4E46-9B4F-91EACBF5ED67} = {1A504966-1A93-4E46-9B4F-91EACBF5ED67}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2.CamerasAndProjections", "2.CamerasAndProjections\2.CamerasAndProjections.vcxproj", "{36F518ED-C571-4636-BF67-E50968B381C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +36,14 @@ Global
 		{8A103248-2E35-480A-85C9-F3E980A3F8C6}.Release|x64.Build.0 = Release|x64
 		{8A103248-2E35-480A-85C9-F3E980A3F8C6}.Release|x86.ActiveCfg = Release|Win32
 		{8A103248-2E35-480A-85C9-F3E980A3F8C6}.Release|x86.Build.0 = Release|Win32
+		{1494AE41-8511-4D99-BE36-E7543781B24C}.Debug|x64.ActiveCfg = Debug|x64
+		{1494AE41-8511-4D99-BE36-E7543781B24C}.Debug|x64.Build.0 = Debug|x64
+		{1494AE41-8511-4D99-BE36-E7543781B24C}.Debug|x86.ActiveCfg = Debug|Win32
+		{1494AE41-8511-4D99-BE36-E7543781B24C}.Debug|x86.Build.0 = Debug|Win32
+		{1494AE41-8511-4D99-BE36-E7543781B24C}.Release|x64.ActiveCfg = Release|x64
+		{1494AE41-8511-4D99-BE36-E7543781B24C}.Release|x64.Build.0 = Release|x64
+		{1494AE41-8511-4D99-BE36-E7543781B24C}.Release|x86.ActiveCfg = Release|Win32
+		{1494AE41-8511-4D99-BE36-E7543781B24C}.Release|x86.Build.0 = Release|Win32
 		{36F518ED-C571-4636-BF67-E50968B381C0}.Debug|x64.ActiveCfg = Debug|x64
 		{36F518ED-C571-4636-BF67-E50968B381C0}.Debug|x64.Build.0 = Debug|x64
 		{36F518ED-C571-4636-BF67-E50968B381C0}.Debug|x86.ActiveCfg = Debug|Win32
